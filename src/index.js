@@ -1,28 +1,7 @@
-const character = ['a', 'b', 'c'];
+const { heroes } = require('./data/heroes');
 
-const [, , ch3] = character;
+const getHeroeById = (id) => heroes.find((heroe) => heroe.id === id);
+const getHeroeByOwner = (owner) => heroes.filter((heroe) => heroe.owner === owner);
 
-console.log(ch3);
-
-const returnArray = () => {
-  return ['ABC', 123];
-};
-
-const [string, number] = returnArray();
-
-console.log(string, number);
-
-const setState = (valor) => {
-  return [
-    valor,
-    () => {
-      console.log('hola mundo');
-    }
-  ];
-};
-
-const [nombre, saludar] = setState('Rafael');
-
-console.log(nombre);
-
-saludar();
+console.log(getHeroeById(2));
+console.log(getHeroeByOwner('DC'));
