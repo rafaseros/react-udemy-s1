@@ -1,15 +1,29 @@
-const saludar = (name) => `Hola: ${name}`;
+const Person = {
+  name: 'Rafael',
+  age: 29,
+  alias: 'Seros',
+};
 
-const getUser = () => ({
-  uid: 'ABC123',
-  username: 'Doit',
-});
+const { name, age, password } = Person;
 
-const getCurrentUser = (name) => ({ uid: 'ACB123', userName: name });
+console.log(name, age, password);
 
-console.log(saludar('Rafael'));
-console.log(getUser());
+const getNameFromPerson = ({ age, alias }) => {
+  return {
+    superName: alias,
+    timeOfLife: age,
+    latlng: {
+      lat: 14.12312,
+      lng: -12.12312,
+    },
+  };
+};
 
-const currentUser = getCurrentUser('Rafael');
+const {
+  superName,
+  timeOfLife,
+  latlng: { lat, lng },
+} = getNameFromPerson(Person);
 
-console.log(currentUser);
+console.log(superName, timeOfLife);
+console.log(lat, lng);
