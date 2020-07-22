@@ -1,9 +1,15 @@
-const array = [1, 2, 3, 4];
+const saludar = (name) => `Hola: ${name}`;
 
-let array2 = [...array, 5];
+const getUser = () => ({
+  uid: 'ABC123',
+  username: 'Doit',
+});
 
-const array3 = array2.map((element) => element * 2);
+const getCurrentUser = (name) => ({ uid: 'ACB123', userName: name });
 
-console.log(array);
-console.log(array2);
-console.log(array3);
+console.log(saludar('Rafael'));
+console.log(getUser());
+
+const currentUser = getCurrentUser('Rafael');
+
+console.log(currentUser);
