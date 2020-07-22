@@ -1,11 +1,32 @@
-import heroes, { owners } from './data/heroes';
+import { getHeroeById } from './utils/findHeroes';
 
-console.log(owners);
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     const heroe = getHeroeById(2);
+//     resolve(heroe);
+//     reject('No se puedo encontrar el heroe');
+//   }, 2000);
+// });
 
-const getHeroeById = (id) => heroes.find((heroe) => heroe.id === id);
+// promise
+//   .then((heroe) => {
+//     console.log(heroe);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
-const getHeroeByOwner = (owner) => heroes.filter((heroe) => heroe.owner === owner);
+const getHeroeByIdAsync = (id) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const heroe = getHeroeById(id);
+      if (heroe) {
+        resolve(heroe);
+      } else {
+        reject('No se puedo encontrar el heroe');
+      }
+    }, 2000);
+  });
+};
 
-console.log(getHeroeById(2));
-
-console.log(getHeroeByOwner('DC'));
+getHeroeByIdAsync(1).then(console.log).catch(console.warn);
