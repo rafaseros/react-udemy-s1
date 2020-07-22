@@ -1,32 +1,11 @@
-import { getHeroeById } from './utils/findHeroes';
+const API_KEY = 'KzBUHGTAFsK94lN0hRVHnJcSFG4B58Y7';
+const HTTP_CALL = fetch(`http://api.giphy.com/v1/gifs/random?api_key=${API_KEY}`);
 
-// const promise = new Promise((resolve, reject) => {
-//   setTimeout(() => {
-//     const heroe = getHeroeById(2);
-//     resolve(heroe);
-//     reject('No se puedo encontrar el heroe');
-//   }, 2000);
-// });
-
-// promise
-//   .then((heroe) => {
-//     console.log(heroe);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
-const getHeroeByIdAsync = (id) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const heroe = getHeroeById(id);
-      if (heroe) {
-        resolve(heroe);
-      } else {
-        reject('No se puedo encontrar el heroe');
-      }
-    }, 2000);
-  });
-};
-
-getHeroeByIdAsync(1).then(console.log).catch(console.warn);
+HTTP_CALL.then((res) => res.json())
+  .then(({ data }) => {
+    const { url } = data.images.original;
+    const img = document.createElement('img');
+    img.src = url;
+    document.body.append(img);
+  })
+  .catch(console.warn);
