@@ -1,18 +1,9 @@
-const person = {
-  name: 'Rafael',
-  lastname: 'Gallegos',
-  age: 29,
-  adreess: {
-    city: 'Santa Cruz',
-    town: 'El triunfo',
-    zone: 'El palmar',
-    uv: 174,
-    mz: 14,
-  },
-};
+const array = [1, 2, 3, 4];
 
-const person2 = { ...person };
-person2.name = 'Jose';
+let array2 = [...array, 5];
 
-console.table(person);
-console.table(person2);
+const array3 = array2.map((element) => element * 2);
+
+console.log(array);
+console.log(array2);
+console.log(array3);
