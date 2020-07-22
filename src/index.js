@@ -1,29 +1,28 @@
-const Person = {
-  name: 'Rafael',
-  age: 29,
-  alias: 'Seros',
+const character = ['a', 'b', 'c'];
+
+const [, , ch3] = character;
+
+console.log(ch3);
+
+const returnArray = () => {
+  return ['ABC', 123];
 };
 
-const { name, age, password } = Person;
+const [string, number] = returnArray();
 
-console.log(name, age, password);
+console.log(string, number);
 
-const getNameFromPerson = ({ age, alias }) => {
-  return {
-    superName: alias,
-    timeOfLife: age,
-    latlng: {
-      lat: 14.12312,
-      lng: -12.12312,
-    },
-  };
+const setState = (valor) => {
+  return [
+    valor,
+    () => {
+      console.log('hola mundo');
+    }
+  ];
 };
 
-const {
-  superName,
-  timeOfLife,
-  latlng: { lat, lng },
-} = getNameFromPerson(Person);
+const [nombre, saludar] = setState('Rafael');
 
-console.log(superName, timeOfLife);
-console.log(lat, lng);
+console.log(nombre);
+
+saludar();
